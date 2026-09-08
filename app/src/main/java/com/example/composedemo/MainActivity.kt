@@ -53,44 +53,10 @@ class MainActivity : ComponentActivity() {
     fun DemoTextPreview() {
         ComposeDemoTheme {
             Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                DemoScreen(modifier = Modifier.padding(innerPadding))
+
             }
         }
     }
 
-    @Composable
-    fun DemoSlider(sliderPosition: Float, onPositionChange: (Float) -> Unit) {
-        Slider(
-            modifier = Modifier.padding(10.dp),
-            valueRange = 20f..38f,
-            value = sliderPosition,
-            onValueChange = { onPositionChange(it) }
-        )
-    }
 
-    @Composable
-    fun DemoScreen(modifier: Modifier = Modifier) {
-        var sliderPosition by remember { mutableFloatStateOf(20f) }
-        val handlePositionChange = { position: Float ->
-            sliderPosition = position
-        }
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxSize()
-        ) {
-            DemoText(message = "Welcome to Compose", fontSize = sliderPosition)
-            Spacer(modifier = Modifier.height(150.dp))
-            DemoSlider(
-                sliderPosition = sliderPosition,
-                onPositionChange = handlePositionChange
-            )
-            Text(
-                style = MaterialTheme.typography.headlineMedium,
-                text = sliderPosition.toInt().toString() + "sp"
-            )
-
-        }
-
-    }
 }
